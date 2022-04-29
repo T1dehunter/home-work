@@ -1,13 +1,44 @@
 version: "3.8"
+
 services:
-  backend:
-    build:
-      context: ./backend
-    ports:
-      - "3000:3000"
   nginx:
     restart: always
     build:
       context: ./nginx
     ports:
       - "80:80"
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+  mongo:
+    build:
+      context: ./mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=localhost
+      - MONGODB_PORT_NUMBER=27017
+  influxdb:
+    build:
+      context: ./influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      # Use these same configurations parameters in your telegraf configuration, mytelegraf.conf.
+      - DOCKER_INFLUXDB_INIT_MODE=upgrade
+      - DOCKER_INFLUXDB_INIT_USERNAME=root
+      - DOCKER_INFLUXDB_INIT_PASSWORD=Test1234
+      - DOCKER_INFLUXDB_INIT_ORG=Home
+      - DOCKER_INFLUXDB_INIT_BUCKET=lesson2
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
+  telegraf:
+    build:
+      context: ./telegraf
+    volumes:
+      - ./telegraf/mytelegraf.conf:/etc/telegraf/telegraf.conf
+    environment:
+      - DOCKER_INFLUXDB_INIT_ORG=Home
+      - DOCKER_INFLUXDB_INIT_BUCKET=lesson2
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
