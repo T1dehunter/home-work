@@ -72,10 +72,13 @@
 
 # Configuration for influxdb server to send metrics to
 [[outputs.influxdb]]
-  urls = ["http://host.docker.internal:8086"] # required
+  ## The full HTTP or UDP endpoint URL for your InfluxDB instance.
+  ## Multiple urls can be specified as part of the same cluster,
+  ## this means that only ONE of the urls will be written to each interval.
+  # urls = ["udp://localhost:8089"] # UDP endpoint example
+  urls = ["http://${INFLUXDB_HOST}:${INFLUXDB_PORT}"] # required
+  ## The target database for metrics (telegraf will create it if not exists).
   database = "${INFLUXDB_DATABASE}" # required
-  username = "${INFLUXDB_ADMIN_USER}"
-  password = "${INFLUXDB_ADMIN_PASSWORD}"
 
   ## Retention policy to write to. Empty string writes to the default rp.
   retention_policy = ""
@@ -85,9 +88,10 @@
   ## Write timeout (for the InfluxDB client), formatted as a string.
   ## If not provided, will default to 5s. 0s means no timeout (not recommended).
   timeout = "5s"
-
+  # username = "telegraf"
+  # password = "metricsmetricsmetricsmetrics"
   ## Set the user agent for HTTP POSTs (can be useful for log differentiation)
-  user_agent = "telegraf"
+  # user_agent = "telegraf"
   ## Set UDP payload size, defaults to InfluxDB UDP Client default (512 bytes)
   # udp_payload = 512
 
@@ -96,7 +100,7 @@
   # ssl_cert = "/etc/telegraf/cert.pem"
   # ssl_key = "/etc/telegraf/key.pem"
   ## Use SSL but skip chain & host verification
-  insecure_skip_verify = false
+  # insecure_skip_verify = false
 
 
 # # Configuration for Amon Server to send metrics to.
@@ -674,11 +678,11 @@
 
 
 # Read metrics about docker containers
-# [[inputs.docker]]
+ [[inputs.docker]]
    ## Docker Endpoint
    ##   To use TCP, set endpoint = "tcp://[ip]:[port]"
    ##   To use environment variables (ie, docker-machine), set endpoint = "ENV"
-#   endpoint = "unix:///var/run/docker.sock"
+   endpoint = "unix:///var/run/docker.sock"
    ## Only collect metrics for these containers, collect all if empty
 #   container_names = []
 #   ## Timeout for docker list, info, and stats commands
@@ -708,16 +712,16 @@
 
 
 # # Read stats from one or more Elasticsearch servers or clusters
-[[inputs.elasticsearch]]
+# [[inputs.elasticsearch]]
 #   ## specify a list of one or more Elasticsearch servers
-  servers = ["http://host.docker.internal:9200"]
+#   servers = ["http://localhost:9200"]
 #
 #   ## set local to false when you want to read the indices stats from all nodes
 #   ## within the cluster
 #   local = true
 #
 #   ## set cluster_health to true when you want to also obtain cluster level stats
-  cluster_health = true
+#   cluster_health = false
 #
 #   ## Optional SSL Config
 #   # ssl_ca = "/etc/telegraf/ca.pem"
@@ -1039,14 +1043,14 @@
 
 
 # # Read metrics from one or many MongoDB servers
-[[inputs.mongodb]]
-  ## An array of URI to gather stats about. Specify an ip or hostname
-  ## with optional port add password. ie,
-  ##   mongodb://user:auth_key@10.10.3.30:27017,
-  ##   mongodb://10.10.3.33:18832,
-  ##   10.0.0.1:10000, etc.
-  servers = ["mongodb://host.docker.internal:27017"]
-  gather_perdb_stats = false
+# [[inputs.mongodb]]
+#   ## An array of URI to gather stats about. Specify an ip or hostname
+#   ## with optional port add password. ie,
+#   ##   mongodb://user:auth_key@10.10.3.30:27017,
+#   ##   mongodb://10.10.3.33:18832,
+#   ##   10.0.0.1:10000, etc.
+#   servers = ["127.0.0.1:27017"]
+#   gather_perdb_stats = false
 
 
 # # Read metrics from one or many mysql servers
@@ -1106,13 +1110,13 @@
 
 
 # Read metrics about network interface usage
-# [[inputs.net]]
+[[inputs.net]]
   ## By default, telegraf gathers stats from any up interface (excluding loopback)
   ## Setting interfaces will tell it to gather these explicit interfaces,
   ## regardless of status.
   ##
-#   interfaces = ["eth*", "enp0s[0-9]", "lo"]
-#   fielddrop = ["icmp*", "ip*", "tcp*", "udp*"]
+  interfaces = ["eth*", "enp0s[0-9]", "lo"]
+  fielddrop = ["icmp*", "ip*", "tcp*", "udp*"]
 
 # # TCP or UDP 'ping' given url and collect response time in seconds
 # [[inputs.net_response]]
@@ -1308,14 +1312,14 @@
 
 
 # Monitor process cpu and memory usage
-# [[inputs.procstat]]
+[[inputs.procstat]]
   ## Must specify one of: pid_file, exe, or pattern
   ## PID file to monitor process
   # pid_file = "/var/run/nginx.pid"
   ## executable name (ie, pgrep <exe>)
   # exe = "nginx"
   ## pattern as argument for pgrep (ie, pgrep -f <pattern>)
-#   pattern = ".*"
+  pattern = ".*"
   ## user as argument for pgrep (ie, pgrep -u <user>)
   # user = "nginx"
 
@@ -1323,15 +1327,15 @@
   ## This is optional; default is sourced from /proc/<pid>/status
   # process_name = "bar"
   ## Field name prefix
-#   prefix = ""
+  prefix = ""
   ## comment this out if you want raw cpu_time stats
-#   fielddrop = ["rlimit*", "cpu_time*"]
+  fielddrop = ["rlimit*", "cpu_time*"]
 
 
 # # Read metrics from one or many prometheus clients
 # [[inputs.prometheus]]
 #   ## An array of urls to scrape metrics from.
-#    urls = ["http://host.docker.internal:3000/metrics"]
+#   urls = ["http://localhost:9100/metrics"]
 #
 #   ## Use bearer token for authorization
 #   # bearer_token = /path/to/bearer/token
@@ -1406,11 +1410,11 @@
 
 
 # Monitor sensors, requires lm-sensors package
-# [[inputs.sensors]]
+[[inputs.sensors]]
   ## Remove numbers from field names.
   ## If true, a field name like 'temp1_input' will be changed to 'temp_input'.
   # remove_numbers = true
-#   fieldpass = ["temp*"]
+  fieldpass = ["temp*"]
 
 # # Retrieves SNMP values from remote agents
 # [[inputs.snmp]]
