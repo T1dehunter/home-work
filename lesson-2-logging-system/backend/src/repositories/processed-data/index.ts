@@ -23,3 +23,5 @@ export class ProcessedDataRepository {
         return this.catModel.findOne(params).exec();
     }
 }
+
+export {ProcessedDataItem};
