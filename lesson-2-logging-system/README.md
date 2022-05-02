@@ -12,12 +12,13 @@ Nodejs [Nest](https://github.com/nestjs/nest) app for display logs based on TIG 
 ## Installation
 
 ```bash
-$ npm install
+$ docker-compose up --build
 ```
 
-## Running the app
+## Description
 
 ```bash
-$ npm run start
+web: localhost
+grafana: localhost:4000
 
 ```
