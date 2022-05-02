@@ -33,6 +33,9 @@ services:
       - .env
     ports:
       - ${MONGODB_PORT}:${MONGODB_PORT}
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=localhost
+      - MONGODB_PORT_NUMBER=MONGODB_PORT
 
 
   elasticsearch:

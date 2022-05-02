@@ -1,5 +1,6 @@
 import {cities as data} from './cities.js';
 import {processCities} from './requests.js';
+import {initView} from './view.js';
 
 const formatCities = (cities) => {
     return Object.entries(cities).flatMap(([state, cities]) => {
@@ -18,11 +19,26 @@ const getRandomCities = ({cities, randomItemsLength}) => {
     return result;
 };
 
+const initHighLoad = () => {
+    let intervalID;
+    return {
+        startHighLoad: () => {
+            let itemsCount = 5;
+            const cities = formatCities(data);
+            intervalID = window.setInterval(() => {
+                const randomCities = getRandomCities({cities, randomItemsLength: itemsCount});
+                processCities(randomCities);
+                itemsCount += 5;
+            }, 1000);
+        },
+        stopHighLoad: () => window.clearInterval(intervalID),
+    }
+};
+
 (() => {
     console.log('START APP');
 
-    const cities = formatCities(data);
-    const randomCities = getRandomCities({cities, randomItemsLength: 5});
+    const {startHighLoad, stopHighLoad} = initHighLoad();
 
-    processCities(randomCities);
+    initView({startHighLoad, stopHighLoad});
 })();
