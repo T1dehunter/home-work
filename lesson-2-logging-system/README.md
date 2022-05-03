@@ -4,7 +4,7 @@
 
 ## Description
 
-Nodejs [Nest](https://github.com/nestjs/nest) app for display logs based on TIG stack.
+Nodejs app for display logs based on TIG stack.
 
 ## Installation
 
