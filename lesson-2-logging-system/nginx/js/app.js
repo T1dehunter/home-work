@@ -29,7 +29,7 @@ const initHighLoad = () => {
                 const randomCities = getRandomCities({cities, randomItemsLength: itemsCount});
                 processCities(randomCities);
                 itemsCount += 5;
-            }, 1000);
+            }, 1500);
         },
         stopHighLoad: () => window.clearInterval(intervalID),
     }
