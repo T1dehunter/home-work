@@ -23,13 +23,12 @@ const initHighLoad = () => {
     let intervalID;
     return {
         startHighLoad: () => {
-            let itemsCount = 5;
+            let itemsCount = 10;
             const cities = formatCities(data);
             intervalID = window.setInterval(() => {
                 const randomCities = getRandomCities({cities, randomItemsLength: itemsCount});
                 processCities(randomCities);
-                itemsCount += 5;
-            }, 1500);
+            }, 1000);
         },
         stopHighLoad: () => window.clearInterval(intervalID),
     }
