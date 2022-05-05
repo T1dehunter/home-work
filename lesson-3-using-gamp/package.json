@@ -1,0 +1,10 @@
+{
+  "name": "appengine-analytics",
+  "description": "test app",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
