@@ -1,73 +1,123 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+<p align="center" xmlns="http://www.w3.org/1999/html">
+  <a href="https://nodejs.org/uk/" target="blank"><img src="https://nodejs.org/static/images/logo.svg" width="200" alt="Nest Logo" /></a>
 </p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Nodejs app for display logs based on TIG stack.
 
 ## Installation
 
 ```bash
-$ npm install
+$ docker-compose up --build
 ```
 
-## Running the app
+## Notes
 
 ```bash
-# development
-$ npm run start
+web: localhost
+grafana: localhost:4000
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+import telegraf dashboard:
+https://grafana.com/grafana/dashboards/61
 
-```bash
-# unit tests
-$ npm run test
+<br />
 
-# e2e tests
-$ npm run test:e2e
+[//]: # (SYSTEM)
+<p>
+    <h3>System before run highload</h3>
+<p/>
 
-# test coverage
-$ npm run test:cov
-```
+<p>
+  <img src="./SCREENSHOTS/system/system_before_run_highload.png" alt="system1" />
+</p>
 
-## Support
+<p>
+    <h3>System after run highload</h3>
+<p/>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+<p>
+  <img src="./SCREENSHOTS/system/system_after_run_highload_1.png" alt="system2" />
+  <img src="./SCREENSHOTS/system/system_after_run_highload_2.png" alt="system3" />
+</p>
 
-## Stay in touch
+<br />
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+[//]: # (NGINX)
+<p>
+    <h3>Nginx before run highload</h3>
+<p/>
 
-## License
+<p>
+  <img src="./SCREENSHOTS/nginx/nginx_before_run_highload.png" alt="nginx1" />
+</p>
 
-Nest is [MIT licensed](LICENSE).
+<p>
+    <h3>Nginx after run highload</h3>
+<p/>
+
+<p>
+  <img src="./SCREENSHOTS/nginx/nginx_after_run_highload.png" alt="nginx2" />
+</p>
+
+[//]: # (NODEJS)
+<p>
+    <h3>Nodejs before run highload</h3>
+<p/>
+
+<p>
+  <img src="./SCREENSHOTS/nodejs/nodejs_before_run_highload.png" alt="nodejs1" />
+</p>
+
+<p>
+    <h3>Nodejs after run highload</h3>
+<p/>
+
+<p>
+  <img src="./SCREENSHOTS/nodejs/nodejs_after_run_highload_1.png" alt="nodejs2" />
+  <img src="./SCREENSHOTS/nodejs/nodejs_after_run_highload_2.png" alt="nodejs3" />
+</p>
+
+[//]: # (MONGODB)
+<p>
+    <h3>MongoDB before run highload</h3>
+<p/>
+
+<p>
+  <img src="./SCREENSHOTS/mongo/mongo_before_run_highload_1.png" alt="mongo1" />
+  <img src="./SCREENSHOTS/mongo/mongo_before_run_highload_2.png" alt="mongo2" />
+</p>
+
+<p>
+    <h3>MongoDB after run highload</h3>
+<p/>
+
+<p>
+  <img src="./SCREENSHOTS/mongo/mongo_after_run_highload_1.png" alt="mongo3" />
+  <img src="./SCREENSHOTS/mongo/mongo_after_run_highload_2.png" alt="mongo4" />
+</p>
+
+[//]: # (ELASTIC)
+<p>
+    <h3>Elasticsearch before run highload</h3>
+<p/>
+
+<p>
+  <img src="./SCREENSHOTS/elastic/elastic_before_run_highload_1.png" alt="elastic1" />
+  <img src="./SCREENSHOTS/elastic/elastic_before_run_highload_2.png" alt="elastic2" />
+  <img src="./SCREENSHOTS/elastic/elastic_before_run_highload_3.png" alt="elastic3" />
+</p>
+
+<p>
+    <h3>Elasticsearch after run highload</h3>
+<p/>
+
+<p>
+  <img src="./SCREENSHOTS/elastic/elastic_after_run_highload_1.png" alt="elastic4" />
+  <img src="./SCREENSHOTS/elastic/elastic_after_run_highload_2.png" alt="elastic5" />
+  <img src="./SCREENSHOTS/elastic/elastic_after_run_highload_3.png" alt="elastic6" />
+</p>
+
+
