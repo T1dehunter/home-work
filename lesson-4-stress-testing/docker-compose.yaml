@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    env_file:
+      - .env
+    ports:
+      - ${WEB_PORT}:${WEB_PORT}
+
+
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    ports:
+      -  ${BACKEND_PORT}:${BACKEND_PORT}
+
+
+  mongo:
+    build:
+      context: ./mongodb
+    env_file:
+      - .env
+    ports:
+      - ${MONGODB_PORT}:${MONGODB_PORT}
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=localhost
+      - MONGODB_PORT_NUMBER=MONGODB_PORT
+
+networks:
+  backend:
+  frontend:
