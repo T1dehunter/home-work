@@ -1,6 +1,12 @@
 import {cities} from './cities.js';
 import {logData} from './requests.js';
 
+const getRandomUserID = (cities) => {
+    const formattedCities = formatCities(cities);
+    const randomCity = formattedCities[Math.floor(Math.random() * formattedCities.length)];
+    return randomCity;
+};
+
 const formatCities = (cities) => {
     return Object.entries(cities).flatMap(([state, cities]) => {
         return cities.map(name => {

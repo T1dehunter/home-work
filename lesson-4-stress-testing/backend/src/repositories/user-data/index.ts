@@ -12,6 +12,11 @@ export class UserDataRepository {
         const document = new this.model(data);
         return document.save();
     }
+
+    async findByUserID(userID: number): Promise<UserData> {
+        const document = this.model.findOne({userID}).exec();
+        return document;
+    }
 }
 
 export {UserData};

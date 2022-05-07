@@ -1,14 +1,20 @@
-import {Controller, Post, Body} from '@nestjs/common';
+import {Controller, Post, Get, Param} from '@nestjs/common';
 
-import {LogUserData} from '../usecases/log-user-data';
+import {FillUserData} from '../usecases/fill-user-data';
+import {GetUserData} from '../usecases/get-user-data';
 
 @Controller()
 export class AppController {
-    constructor(private readonly processDataUseCase: LogUserData) {}
+    constructor(private readonly fillUserDataUseCase: FillUserData, private readonly getDataUseCase: GetUserData) {}
 
-    @Post('/log')
-    getHello(@Body() body: any) {
-        const {data} = body;
-        return this.processDataUseCase.execute(data);
+    @Post('/fill-user-data')
+    fillUserData() {
+        return this.fillUserDataUseCase.execute();
+    }
+
+    @Get('/get-user-data/:userID')
+    getUserData(@Param() params) {
+        const {userID} = params;
+        return this.getDataUseCase.execute(userID);
     }
 }
