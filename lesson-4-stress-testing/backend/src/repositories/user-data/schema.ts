@@ -3,7 +3,7 @@ import {Document} from 'mongoose';
 
 export type UserDataDocument = UserData & Document;
 
-@Schema({collection: 'logged-data', timestamps: true})
+@Schema({collection: 'logged_data', timestamps: true})
 export class UserData {
     @Prop({type: Number, required: true})
     userID: number;

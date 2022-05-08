@@ -15,6 +15,6 @@ export class AppController {
     @Get('/get-user-data/:userID')
     getUserData(@Param() params) {
         const {userID} = params;
-        return this.getDataUseCase.execute(userID);
+        return this.getDataUseCase.execute();
     }
 }

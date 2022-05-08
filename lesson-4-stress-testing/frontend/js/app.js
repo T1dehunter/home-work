@@ -6,8 +6,8 @@ const getUsersIds = () => {
 
 const getRandomUserID = () => {
     const usersIds = getUsersIds();
-    const randomCity = usersIds[Math.floor(Math.random() * usersIds.length)];
-    return randomCity;
+    const randomID = usersIds[Math.floor(Math.random() * usersIds.length)];
+    return randomID;
 };
 
 (() => {

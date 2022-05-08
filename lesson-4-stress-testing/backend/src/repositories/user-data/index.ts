@@ -14,7 +14,13 @@ export class UserDataRepository {
     }
 
     async findByUserID(userID: number): Promise<UserData> {
-        const document = this.model.findOne({userID}).exec();
+        const [document] = await Promise.all([
+            this.model.findOne({userID}).exec(),
+            this.model.findOne({userID: userID + 1}).exec(),
+            this.model.findOne({userID: userID + 2}).exec(),
+            this.model.findOne({userID: userID + 3}).exec(),
+            this.model.findOne({userID: userID + 4}).exec(),
+        ]);
         return document;
     }
 }

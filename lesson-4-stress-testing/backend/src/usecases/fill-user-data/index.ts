@@ -1,6 +1,7 @@
 import {Injectable} from '@nestjs/common';
 
 import {UserDataRepository} from 'repositories/user-data';
+import {ITEMS_COUNT} from 'config';
 
 import {cities} from './cities';
 
@@ -24,7 +25,7 @@ export class FillUserData {
     }
 
     private getUserIds(): number[] {
-        return Array.from({length: 1000}).map((_, index) => index + 1);
+        return Array.from({length: ITEMS_COUNT}).map((_, index) => index + 1);
     }
 
     async execute() {
