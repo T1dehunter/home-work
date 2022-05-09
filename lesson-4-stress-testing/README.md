@@ -9,11 +9,11 @@ Nodejs app for stress testing.
 ## Installation
 
 ```bash
-$ docker-compose up --build
+$ npm install
 ```
 
 ## Notes
 
 ```bash
-web: localhost
+api url: http://localhost:3000/test
 ```

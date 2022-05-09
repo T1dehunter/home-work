@@ -3,7 +3,7 @@ import {Injectable} from '@nestjs/common';
 type CacheItem = {expireAt: number; data: unknown};
 type AppCache = Record<number, CacheItem>;
 
-const TTL_IN_MS = 1000;
+const TTL_IN_MS = 500_000;
 
 @Injectable()
 export class CacheService {
@@ -29,21 +29,39 @@ export class CacheService {
         return expireInPercents;
     }
 
-    private isCacheValid(item: CacheItem): boolean {
-        if (this.isCacheExpired(item)) {
-            return true;
-        }
+    private isCacheProbabilisticExpired(item: CacheItem): boolean {
         const expireInPercents = this.getExpirationInPercents(item);
         const percentsRoll = this.getRandomNumberFromInterval(1, 100);
+        // console.log('DEBUG DATA: ', {
+        //     item,
+        //     expireInPercents,
+        //     percentsRoll,
+        //     isExpired: expireInPercents >= percentsRoll,
+        // });
         return expireInPercents >= percentsRoll;
     }
 
-    async getById(id: number) {
-        const data = this.memoryStorage[id];
-        return data && this.isCacheValid(data) ? data : undefined;
+    getById(id: number) {
+        const item = this.memoryStorage[id];
+
+        if (!item) {
+            return;
+        }
+
+        if (this.isCacheExpired(item)) {
+            delete this.memoryStorage[id];
+            return;
+        }
+
+        if (this.isCacheProbabilisticExpired(item)) {
+            delete this.memoryStorage[id];
+            return;
+        }
+
+        return item.data;
     }
 
-    async setById(id: number, data: unknown) {
+    setById(id: number, data: unknown) {
         const now = new Date().getTime();
         const expireAt = now + TTL_IN_MS;
         this.memoryStorage[id] = {expireAt, data};
