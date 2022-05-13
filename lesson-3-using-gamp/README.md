@@ -17,3 +17,9 @@ $ npm install
 ```bash
 $ node app.js
 ```
+
+Results
+
+<p align="center" xmlns="http://www.w3.org/1999/html">
+  <img alt="test" src="./results/ga_events_results.png" width="200" />
+</p>
