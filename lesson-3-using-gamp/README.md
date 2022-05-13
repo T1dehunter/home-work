@@ -21,5 +21,5 @@ $ node app.js
 Results
 
 <p align="center" xmlns="http://www.w3.org/1999/html">
-  <img src="./results/ga_events.png" width="200" alt="Nest Logo" />
+  <img alt="test" src="./results/ga_events_results.png" width="200" />
 </p>
