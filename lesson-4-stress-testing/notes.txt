@@ -1,0 +1,139 @@
+NGINX CONFIG
+/opt/homebrew/etc/nginx/nginx.conf
+
+# restart nginx
+sudo nginx -s stop && sudo nginx
+
+
+
+concurrent = 10; time = 30s;
+
+WITHOUT CACHE
+Transactions:                    332 hits
+Availability:                 100.00 %
+Elapsed time:                  29.06 secs
+Data transferred:               1.64 MB
+Response time:                  0.86 secs
+Transaction rate:              11.42 trans/sec
+Throughput:                     0.06 MB/sec
+Concurrency:                    9.83
+Successful transactions:         332
+Failed transactions:               0
+Longest transaction:            2.05
+Shortest transaction:           0.74
+
+
+WITH CACHE
+Transactions:                  16312 hits
+Availability:                 100.00 %
+Elapsed time:                  29.09 secs
+Data transferred:              80.56 MB
+Response time:                  0.01 secs
+Transaction rate:             560.74 trans/sec
+Throughput:                     2.77 MB/sec
+Concurrency:                    7.61
+Successful transactions:       16312
+Failed transactions:               0
+Longest transaction:            6.77
+Shortest transaction:           0.00
+
+
+
+concurrent = 25; time = 30s;
+
+WITHOUT CACHE
+Transactions:                    340 hits
+Availability:                 100.00 %
+Elapsed time:                  29.43 secs
+Data transferred:               1.68 MB
+Response time:                  2.08 secs
+Transaction rate:              11.55 trans/sec
+Throughput:                     0.06 MB/sec
+Concurrency:                   23.97
+Successful transactions:         340
+Failed transactions:               0
+Longest transaction:            2.37
+Shortest transaction:           1.87
+
+
+WITH CACHE
+Transactions:                  16263 hits
+Availability:                 100.00 %
+Elapsed time:                  29.90 secs
+Data transferred:              80.32 MB
+Response time:                  0.03 secs
+Transaction rate:             543.91 trans/sec
+Throughput:                     2.69 MB/sec
+Concurrency:                   17.26
+Successful transactions:       16263
+Failed transactions:               0
+Longest transaction:            2.99
+Shortest transaction:           0.00
+
+
+
+
+concurrent = 50; time = 30s;
+
+WITHOUT CACHE
+ Transactions:                    300 hits
+ Availability:                 100.00 %
+ Elapsed time:                  29.60 secs
+ Data transferred:               1.48 MB
+ Response time:                  4.48 secs
+ Transaction rate:              10.14 trans/sec
+ Throughput:                     0.05 MB/sec
+ Concurrency:                   45.40
+ Successful transactions:         300
+ Failed transactions:               0
+ Longest transaction:            6.19
+ Shortest transaction:           3.81
+
+
+WITH CACHE
+Transactions:                  16249 hits
+Availability:                 100.00 %
+Elapsed time:                  29.51 secs
+Data transferred:              80.25 MB
+Response time:                  0.07 secs
+Transaction rate:             550.63 trans/sec
+Throughput:                     2.72 MB/sec
+Concurrency:                   41.22
+Successful transactions:       16249
+Failed transactions:               0
+Longest transaction:            5.26
+Shortest transaction:           0.00
+
+
+
+concurrent = 100; time = 30s;
+
+WITHOUT CACHE
+Transactions:                    300 hits
+Availability:                 100.00 %
+Elapsed time:                  29.34 secs
+Data transferred:               1.48 MB
+Response time:                  8.47 secs
+Transaction rate:              10.22 trans/sec
+Throughput:                     0.05 MB/sec
+Concurrency:                   86.63
+Successful transactions:         300
+Failed transactions:               0
+Longest transaction:            9.29
+Shortest transaction:           7.64
+
+
+WITH CACHE
+Transactions:                  14174 hits
+Availability:                 100.00 %
+Elapsed time:                  29.34 secs
+Data transferred:              70.01 MB
+Response time:                  0.19 secs
+Transaction rate:             483.09 trans/sec
+Throughput:                     2.39 MB/sec
+Concurrency:                   92.53
+Successful transactions:       14174
+Failed transactions:               0
+Longest transaction:           10.13
+Shortest transaction:           0.00
+
