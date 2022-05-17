@@ -21,5 +21,5 @@ api url: http://localhost:3000/test
 ## Results
 
 <p align="center" xmlns="http://www.w3.org/1999/html">
-  <img alt="test" src="results/image.png" width="200" />
+  <img alt="test" src="results/img.png" width="1440" />
 </p>
