@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  nginx-main:
+    restart: always
+    build:
+      context: nginx-main
+    ports:
+      - "9000:80"
+
+
+  nginx-cache:
+    restart: always
+    build:
+      context: nginx-cache
+    links:
+      - nginx-main
+    ports:
+      - "80:80"

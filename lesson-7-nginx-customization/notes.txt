@@ -1,0 +1,7 @@
+clear && docker-compose up --build
+docker rm -f $(docker ps -a -q)
+
+curl -X GET -I http://localhost/img/master-yoda.png
+curl -X GET -I http://localhost/img/darth-vader.png
+
+docker exec -it 12ab0889f2d9 ls -R /tmp/nginx_cache
