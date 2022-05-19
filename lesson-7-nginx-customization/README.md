@@ -20,7 +20,24 @@ curl -X GET -I http://localhost/img/darth-vader.png
 ```
 
 ## Results
-<p>
+
+<p align="center" xmlns="http://www.w3.org/1999/html">
+  <img alt="test" src="results/img_1.png" width="1440" />
 </p>
 
+<p align="center" xmlns="http://www.w3.org/1999/html">
+  <img alt="test" src="results/img_2.png" width="1440" />
+</p>
+
+<p align="center" xmlns="http://www.w3.org/1999/html">
+  <img alt="test" src="results/img_3.png" width="1440" />
+</p>
+
+<p align="center" xmlns="http://www.w3.org/1999/html">
+  <img alt="test" src="results/img_4.png" width="1440" />
+</p>
+
+<p align="center" xmlns="http://www.w3.org/1999/html">
+  <img alt="test" src="results/img_5.png" width="1440" />
+</p>
 
