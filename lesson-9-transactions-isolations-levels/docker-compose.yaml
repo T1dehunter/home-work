@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: percona
+    restart: always
+    platform: linux/x86_64
+    ports:
+      - "4000:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ""
+#      MYSQL_ROOT_HOST: "localhost"
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "4001:5432"
+    environment:
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "5000:8080"
