@@ -19,8 +19,6 @@ services:
       - '6379:6379'
   redis-slave:
     image: 'bitnami/redis:latest'
-    volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=slave
       - REDIS_MASTER_HOST=redis
@@ -34,8 +32,6 @@ services:
       - app-tier
   redis-sentinel:
     image: 'bitnami/redis-sentinel:latest'
-    volumes:
-      - ./redis:/bitnami
     environment:
       - REDIS_MASTER_PASSWORD=str0ng_passw0rd
     depends_on:
