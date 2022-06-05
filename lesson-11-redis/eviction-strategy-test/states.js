@@ -1,4 +1,4 @@
-export const cities = {
+export const states = {
     "New York": [
         "New York",
         "Buffalo",
