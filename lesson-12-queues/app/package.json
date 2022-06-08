@@ -1,0 +1,16 @@
+{
+  "name": "test-redis",
+  "version": "1.0.0",
+  "description": "test",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jackd": "^2.1.2",
+    "lodash": "^4.17.21",
+    "redis": "^4.1.0"
+  },
+  "type": "module"
+}

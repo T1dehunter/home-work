@@ -1,0 +1,19 @@
+version: "2"
+
+sync_userid: '1'
+
+syncs:
+  redis-aof:
+    notify_terminal: true
+    src: './redis-aof'
+    sync_excludes: ['.git', '.idea', 'node_modules']
+
+  redis-rdb:
+    notify_terminal: true
+    src: './redis-rdb'
+    sync_excludes: [ '.git', '.idea', 'node_modules' ]
+
+  beanstalkd:
+    notify_terminal: true
+    src: './beanstalkd'
+    sync_excludes: [ '.git', '.idea', 'node_modules' ]
