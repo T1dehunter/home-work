@@ -35,6 +35,20 @@ export class Tree {
         }
     }
 
+    find({key}) {
+        let node = this.root;
+        while (node != null) {
+            if (key < node.key) {
+                node = node.left;
+            } else if (key > node.key) {
+                node = node.right;
+            } else {
+                return node.key;
+            }
+        }
+        return null;
+    }
+
     rotateLeft(node) {
         const vertex = node.right;
 
@@ -115,7 +129,7 @@ export class Tree {
         node.parent = parent;
 
         // insert node in left or right subtree
-        if (! parent) {
+        if (!parent) {
             this.root = node;
         } else if (node.key < parent.key) {
             parent.left = node;
@@ -129,7 +143,7 @@ export class Tree {
             return;
         }
         // node has no grandparent, so we have no to balance the tree
-        if (! node.parent.parent) {
+        if (!node.parent.parent) {
             return;
         }
 

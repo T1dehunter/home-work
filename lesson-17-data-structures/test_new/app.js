@@ -1,3 +1,4 @@
+import {DataSet} from './data-set.js';
 import {Tree} from './tree.js';
 
 const t = new Tree();
@@ -39,3 +40,44 @@ t.printTree();
 t.deleteNode(2);
 
 t.printTree();
+
+const data = DataSet.generate(100);
+
+const getRandomItemFromArray = (arr) => {
+    const item = arr[Math.floor(Math.random() * arr.length)];
+    return item;
+};
+
+
+const insertMeasurements = [];
+for (let i = 0; i < data.length; i++) {
+    const listItems = data[i];
+    const tree = new Tree();
+
+    for (let k = 0; k < listItems.length; k++) {
+        const value = listItems[k];
+        tree.insert({key: value});
+    }
+
+    const measurement = () => {
+        const randomValue = getRandomItemFromArray(listItems);
+
+        const start = performance.now();
+
+        tree.insert({key: randomValue});
+
+        const end = performance.now();
+
+        const executionTime = end - start;
+
+        // console.log("DEBUG DATA: ", {listItemsLength: listItems.length, randomValue, start, end, res: executionTime});
+
+        return executionTime;
+    };
+
+    insertMeasurements.push(measurement);
+}
+
+for (let i = 0; i < insertMeasurements.length; i++) {
+    console.log(`INSERT MEASUREMENT ${i + 1} TEST: `, insertMeasurements[i]());
+}
