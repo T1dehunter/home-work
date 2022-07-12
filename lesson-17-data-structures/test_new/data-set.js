@@ -4,7 +4,7 @@ const getRandomNumberFromInterval = (min, max) => {
 
 export class DataSet {
     static generate(count) {
-        const multiplier = 1000;
+        const multiplier = 50_000;
         const result = [];
         const result1 = [];
         for (let i = 1; i <= count; i++) {

@@ -219,7 +219,7 @@ export class Tree {
         newNode.parent = oldNode.parent;
     }
 
-    deleteNode(key) {
+    deleteNode({ key }) {
         let forRemove = this.leaf;
         let tmp = this.root;
 

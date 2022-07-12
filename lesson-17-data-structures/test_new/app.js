@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import {DataSet} from './data-set.js';
 import {Tree} from './tree.js';
 
@@ -43,10 +45,7 @@ t.printTree();
 
 const data = DataSet.generate(100);
 
-const getRandomItemFromArray = (arr) => {
-    const item = arr[Math.floor(Math.random() * arr.length)];
-    return item;
-};
+
 
 
 const insertMeasurements = [];
@@ -78,6 +77,11 @@ for (let i = 0; i < data.length; i++) {
     insertMeasurements.push(measurement);
 }
 
+const insertResults = [];
 for (let i = 0; i < insertMeasurements.length; i++) {
-    console.log(`INSERT MEASUREMENT ${i + 1} TEST: `, insertMeasurements[i]());
+    const res = insertMeasurements[i]();
+    insertResults.push(res);
+    console.log(`INSERT MEASUREMENT ${i + 1} TEST: `, );
 }
+
+fs.writeFileSync('./testInsert.json', JSON.stringify(insertResults));
