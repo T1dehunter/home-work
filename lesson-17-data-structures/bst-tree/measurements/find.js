@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-import {DataSet} from '../data-set.js';
-import {Tree} from '../tree.js';
+import {DataSet} from './data-set.js';
+import {Tree} from '../tree/tree.js';
 import {getRandomItemFromArray} from './utils.js';
 
 const data = DataSet.generate(100);
@@ -30,4 +30,4 @@ for (let i = 0; i < data.length; i++) {
     results.push(executionTime);
 }
 
-fs.writeFileSync('./testFind.json', JSON.stringify(results));
+fs.writeFileSync('./bst-tree/measurements/find_data_result.json', JSON.stringify(results));
