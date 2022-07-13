@@ -24,7 +24,7 @@ Test data are randomized first 12 characters of the alphabet.
 
 Counting Sort doesn’t perform when we can have data with very different range like
 ```bash
- const arr = [1, 5, 4, 10, 10_000, 8, 500_000, 2, 10_000_000];
+ const arr = [1, 5, 4, 10, 10_000, 8, 3, 500_000, 2, 10_000_000];
 ```
 
-In this case we will have "count" array with length = 10_000_000.
+In this case we have only 10 values for sorting, but we will have "count" array with length = 10_000_000.
