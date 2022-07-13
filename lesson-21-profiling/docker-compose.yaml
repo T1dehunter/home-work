@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  aprof:
+    build:
+      context: aprofe
+    volumes:
+      - ./bst-tree:/home/ubuntu/bst-tree
+#    command: ["ls", '/home/ubuntu/bst-tree']
+    command: ["aprof/valgrind/inst/bin/valgrind", "--tool=aprof", "./bst-tree/quick_tutorial"]
+#    command: ["ls", '/home/ubuntu/aprof/valgrind/inst/bin']
+#    command: ["aprof/valgrind/inst/bin/valgrind", "--tool=aprof", "node", "bst-tree/test.js"]
+#    command: ['/home/ubuntu/bst-tree/quick_tutorial']
+#    command: ["aprof/valgrind/inst/bin/valgrind", "--tool=aprof", "bst-tree/quick_tutorial"]
+#    command: ["node", "bst-tree/test.js"]
+#    command: ["ls", '/home/ubuntu']
+#    command: ["cd", "bst-tree"]
+#volumes:
+#  bst-tree:
