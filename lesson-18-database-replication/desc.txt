@@ -5,3 +5,9 @@ docker exec -it container-name sh
 docker rm $(docker ps --filter status=exited -q)
 
 docker exec -it f52e3dfce30c bash
+
+docker exec -it mysql-master cat '/etc/hosts
+
+docker rm -f $(docker ps -a -q)
+
+docker volume rm $(docker volume ls -qf dangling=true)
