@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE USER 'slave_1'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
 GRANT REPLICATION SLAVE ON *.* TO 'slave_1'@'%';
 
--- CREATE USER 'slave_2'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
--- GRANT REPLICATION SLAVE ON *.* TO 'slave_2'@'%';
+CREATE USER 'slave_2'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+GRANT REPLICATION SLAVE ON *.* TO 'slave_2'@'%';
 
 FLUSH PRIVILEGES;
 

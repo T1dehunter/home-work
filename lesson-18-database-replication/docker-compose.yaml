@@ -36,18 +36,18 @@ services:
           - mysql
 
 
-#  mysql-slave-2:
-#    build:
-#      context: mysql-slave-2
-#    restart: always
-#    container_name: mysql-slave-2
-#    ports:
-#      - '3309:3306'
-#    environment:
-#      MYSQL_USER_ROOT_USER: root
-#      MYSQL_ROOT_PASSWORD: root
-#      MYSQL_ALLOW_EMPTY_PASSWORD: 1
-#    networks:
-#      default:
-#        aliases:
-#          - mysql
+  mysql-slave-2:
+    build:
+      context: mysql-slave-2
+    restart: always
+    container_name: mysql-slave-2
+    ports:
+      - '3309:3306'
+    environment:
+      MYSQL_USER_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    networks:
+      default:
+        aliases:
+          - mysql
