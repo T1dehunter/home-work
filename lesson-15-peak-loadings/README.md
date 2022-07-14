@@ -6,7 +6,7 @@
    - Important events - semi-finals, finals
 
     Solutions:
-    - Pre increase resources
+    - Increase resources, Pre increase resources before events.
 
 
 
