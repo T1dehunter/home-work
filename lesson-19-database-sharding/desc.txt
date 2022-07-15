@@ -1,0 +1,17 @@
+docker-compose up --build
+
+docker exec -it container-name sh
+
+docker rm $(docker ps --filter status=exited -q)
+
+docker exec -it f52e3dfce30c bash
+
+docker exec -it mysql-master cat '/etc/hosts'
+
+docker rm -f $(docker ps -a -q)
+
+docker volume rm $(docker volume ls -qf dangling=true)
+
+CHANGE MASTER TO MASTER_HOST='172.19.0.2', MASTER_USER='slave_2', MASTER_PASSWORD='password', MASTER_LOG_FILE = 'mysql-bin.000003', MASTER_LOG_POS = 157;
+FLUSH PRIVILEGES;
+START SLAVE;

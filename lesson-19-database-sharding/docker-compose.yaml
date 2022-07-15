@@ -1,0 +1,10 @@
+version: "3.8"
+
+
+services:
+  postgres-base:
+    container_name: postgres-base
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
