@@ -18,15 +18,15 @@ const getRandomAge = () => {
 
 const createUsers = async () => {
     const client = await connect();
-    await client.createDB();
-    await client.createTB();
-    const COUNT_USERS = 100_000;
+    const COUNT_USERS = 1000;
     let usersBatch = [];
     for (let i = 0; i <= COUNT_USERS; i++) {
         const birthDate = getRandomDate();
-        const age = getRandomDate();
+        const age = getRandomAge();
+
         usersBatch.push({birthDate, age});
-        if (usersBatch.length === 10_000) {
+
+        if (usersBatch.length === 100) {
             await client.createManyUsers(usersBatch);
             console.log(`Created ${i + 1} batch users`);
             usersBatch = [];

@@ -1,12 +1,12 @@
 import mysql from 'mysql2';
 
-const TABLE_NAME = 'home_work_18.users';
+const TABLE_NAME = '`home-work-18`.users';
 
 const getClient = (connection) => {
     return {
         createManyUsers: (users) => {
             const values = users.map(user => `('${user.birthDate}', '${user.age}')`).join(', ');
-            const sql =`INSERT INTO ${TABLE_NAME}(birthDate, age) VALUES ${values}`;
+            const sql =`INSERT INTO ${TABLE_NAME}(birth_date, age) VALUES ${values}`;
             return new Promise((resolve, reject) => {
                 connection.query(sql, function (err) {
                     if (err) {
@@ -23,9 +23,9 @@ export const connect = async () => {
     return new Promise((resolve, reject) => {
         const con = mysql.createConnection({
             host: 'localhost',
-            port: '3306',
+            port: '3307',
             user: "root",
-            password: "",
+            password: "root",
         });
 
         con.connect(async function(err) {
