@@ -32,7 +32,7 @@ user=mysql
 pid-file=/var/run/mysqld/mysqld.pid
 
 
-server_id = 2
+server_id = 3
 relay-log = /var/log/mysql/mysql-relay-bin.log
 log_bin = /var/log/mysql/mysql-bin.log
 binlog_do_db = home-work-18
