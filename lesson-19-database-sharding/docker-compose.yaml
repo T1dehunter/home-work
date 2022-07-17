@@ -15,9 +15,8 @@ services:
 
 
   postgres-shard-1:
-    build:
-      context: postgresql-shard-1
-    container_name: postgres-shard-1
+    build: postgresql-shard-1
+    container_name: postgresql-shard-1
     image: postgres
     restart: always
     environment:

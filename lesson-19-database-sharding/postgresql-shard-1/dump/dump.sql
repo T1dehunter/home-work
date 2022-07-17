@@ -8,7 +8,7 @@ year int not null );
 
 CREATE EXTENSION postgres_fdw;
 
-CREATE SERVER books_base FOREIGN DATA WRAPPER postgres_fdw OPTIONS(host ’127.0.0.1’, port ‘5432’, dbname ‘books’);
+CREATE SERVER books_base FOREIGN DATA WRAPPER postgres_fdw OPTIONS(host '127.0.0.1', port '5432', dbname 'books');
 
 
 
