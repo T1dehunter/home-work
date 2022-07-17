@@ -23,3 +23,14 @@ services:
       POSTGRES_PASSWORD: example
     ports:
       - '5433:5432'
+
+
+  postgres-shard-2:
+    build: postgresql-shard-2
+    container_name: postgresql-shard-2
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - '5434:5432'
