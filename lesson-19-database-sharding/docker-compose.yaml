@@ -6,7 +6,6 @@ services:
     build:
       context: postgresql-base
     container_name: postgres-base
-    image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: example
@@ -15,9 +14,9 @@ services:
 
 
   postgres-shard-1:
-    build: postgresql-shard-1
+    build:
+      context: postgresql-shard-1
     container_name: postgresql-shard-1
-    image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: example
@@ -26,9 +25,9 @@ services:
 
 
   postgres-shard-2:
-    build: postgresql-shard-2
+    build:
+      context: postgresql-shard-2
     container_name: postgresql-shard-2
-    image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: example

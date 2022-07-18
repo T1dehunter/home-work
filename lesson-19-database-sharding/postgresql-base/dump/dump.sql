@@ -1,21 +1,21 @@
 CREATE TABLE books (
 id bigint not null,
-category_id  int not null,
+category_id int not null,
 author character varying not null,
 title character varying not null,
-year int not null )
+year int not null );
 
 CREATE EXTENSION postgres_fdw;
 
-CREATE SERVER books_1_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS(host '127.0.0.1', port '5433', dbname 'books_1');
-CREATE SERVER books_2_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS(host '127.0.0.1', port '5434', dbname 'books_2');
+CREATE SERVER books_1_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS(host '127.0.0.1', port '5432', dbname 'books_1');
+CREATE SERVER books_2_server FOREIGN DATA WRAPPER postgres_fdw OPTIONS(host '127.0.0.1', port '5433', dbname 'books_2');
 
 CREATE USER MAPPING FOR 'postgres' SERVER books_1_server OPTIONS (user 'postgres', password 'postgres');
 CREATE USER MAPPING FOR 'postgres' SERVER books_2_server OPTIONS (user 'postgres', password 'postgres');
 
 CREATE FOREIGN TABLE books_1 (
 id bigint not null,
-category_id  int_not_null,
+category_id int not null,
 author character varying not null,
 title character varying not null,
 year int not null )
@@ -24,7 +24,7 @@ OPTIONS (schema_name 'public', table_name 'books');
 
 CREATE FOREIGN TABLE books_2 (
 id bigint not null,
-category_id  int_not_null,
+category_id  int not null,
 author character varying not null,
 title character varying not null,
 year int not null )
