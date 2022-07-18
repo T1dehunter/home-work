@@ -31,10 +31,7 @@ year int not null )
 SERVER books_2_server
 OPTIONS (schema_name 'public', table_name 'books');
 
-CREATE VIEW books AS
-	SELECT * FROM books_1
-		UNION ALL
-	SELECT * FROM books_2
+CREATE VIEW books AS SELECT * FROM books_1 UNION ALL SELECT * FROM books_2;
 
 CREATE RULE books_insert AS ON INSERT TO books DO INSTEAD NOTHING;
 CREATE RULE books_update AS ON UPDATE TO books DO INSTEAD NOTHING;
