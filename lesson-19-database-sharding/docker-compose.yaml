@@ -2,18 +2,18 @@ version: "3.8"
 
 
 services:
-  postgres-base:
+  postgresql-base:
     build:
       context: postgresql-base
-    container_name: postgres-base
+    container_name: postgresql-base
     restart: always
     environment:
       POSTGRES_PASSWORD: example
     ports:
-      - '5432:5432'
+      - '5000:5432'
 
 
-  postgres-shard-1:
+  postgresql-shard-1:
     build:
       context: postgresql-shard-1
     container_name: postgresql-shard-1
@@ -21,10 +21,10 @@ services:
     environment:
       POSTGRES_PASSWORD: example
     ports:
-      - '5433:5432'
+      - '5001:5432'
 
 
-  postgres-shard-2:
+  postgresql-shard-2:
     build:
       context: postgresql-shard-2
     container_name: postgresql-shard-2
@@ -32,4 +32,4 @@ services:
     environment:
       POSTGRES_PASSWORD: example
     ports:
-      - '5434:5432'
+      - '5002:5432'
