@@ -1,0 +1,89 @@
+version: "3.8"
+
+
+services:
+  postgresql-base:
+    build:
+      context: postgresql-base
+    container_name: postgresql-base
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - '5000:5432'
+
+
+  postgresql-shard-1:
+    build:
+      context: postgresql-shard-1
+    container_name: postgresql-shard-1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - '5001:5432'
+
+
+  postgresql-shard-2:
+    build:
+      context: postgresql-shard-2
+    container_name: postgresql-shard-2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - '5002:5432'
+
+
+#  telegraf:
+#    build: ./telegraf
+#    container_name: telegraf
+#    links:
+#      - influxdb
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - /proc:/hostfs/proc
+#    privileged: true
+#    restart: always
+#    env_file:
+#      - .env
+#    depends_on:
+#      - influxdb
+#    networks:
+#      - log_data
+#
+#
+#  influxdb:
+#    build: ./influxdb
+#    container_name: influxdb
+#    ports:
+#      - ${INFLUXDB_PORT}:${INFLUXDB_PORT}
+#    volumes:
+#      - /var/lib/influxdb:/var/lib/influxdb
+#    restart: always
+#    env_file:
+#      - .env
+#    networks:
+#      - log_data
+#
+#
+#  grafana:
+#    build: ./grafana
+#    container_name: grafana
+#    ports:
+#      - ${GRAFANA_OUTER_PORT}:${GRAFANA_PORT}
+#    links:
+#      - influxdb
+#    volumes:
+#      - /var/lib/grafana
+#      - /var/log/grafana
+#      - /var/lib/grafana/plugins
+#    restart: always
+#    env_file:
+#      - .env
+#    networks:
+#      - log_data
+
+
+#networks:
+#  log_data:

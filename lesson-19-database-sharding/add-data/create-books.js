@@ -15,9 +15,9 @@ const getRandomAuthor = (bookID) => {
 };
 
 const getRandomCategory = () => {
-    const start = 1;
-    const end = 3;
-    return Math.floor(Math.random() * (start - end + 1) + end);
+    const categories = [1, 2, 3];
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    return randomCategory;
 };
 
 const createBooks = async () => {
@@ -25,8 +25,7 @@ const createBooks = async () => {
 
     const startAddUsers = performance.now();
 
-    // for (let i = 1; i <= 1_000_000; i++) {
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 1_000_000; i++) {
         const book = {id: i, category: getRandomCategory(), author: getRandomAuthor(i), title: getRandomTitle(i), year: getRandomYear()};
         await client.query(`INSERT INTO books VALUES (${book.id}, ${book.category}, '${book.author}', '${book.title}', ${book.year})`);
     }
@@ -37,7 +36,7 @@ const createBooks = async () => {
 
 
     console.log('Count inserted books: ', res.rows[0].count);
-    console.log(`Insertion took: ${endAddUsers - startAddUsers / 1000} seconds.` );
+    console.log(`Insertion took: ${(endAddUsers - startAddUsers) / 1000} seconds.` );
 }
 
 createBooks().catch((err) => {

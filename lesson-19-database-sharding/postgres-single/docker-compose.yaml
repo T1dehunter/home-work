@@ -1,0 +1,13 @@
+version: "3.8"
+
+
+services:
+  postgresql-single:
+    build:
+      context: postgresql
+    container_name: postgresql-single
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - '5000:5432'
