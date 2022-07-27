@@ -4,7 +4,7 @@
 
 <p><img src="results/img_2.png"></p>
 
-<p><img src="results/img_6.png"></p>
+<p><img src="results/img_7.png"></p>
 
 <p><img src="results/img_3.png"></p>
 
