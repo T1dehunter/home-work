@@ -2,7 +2,7 @@
 
 <p><img src="results/img.png"></p>
 
-<p><img src="results/img_1.png"></p>
+<p><img src="results/img_2.png"></p>
 
 <p><img src="results/img_6.png"></p>
 
