@@ -1,0 +1,1 @@
+http://my-test-auto-scaling-group-1-1-1868321208.eu-west-3.elb.amazonaws.com/

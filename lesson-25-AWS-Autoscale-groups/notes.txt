@@ -1,0 +1,1 @@
+siege -c 50 -t 20s -f ./siege/urls.txt
